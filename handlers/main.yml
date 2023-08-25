@@ -1,0 +1,6 @@
+---
+# handlers file for http-role
+- name: raman
+  service:
+    name: httpd
+    state: restarted

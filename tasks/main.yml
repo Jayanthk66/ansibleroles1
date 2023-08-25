@@ -1,0 +1,14 @@
+---
+# tasks file for http-role
+- name: include nested ntp-role
+  include_role:
+    name: ntp-role
+- name: installing apache package
+  yum: name="{{ pkg }}" state=present
+- name: configuration of conf file of apache
+  template:
+    src: httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
+  notify: raman
+- name: starting apache webservice
+  service: name=httpd enabled=yes state=started
